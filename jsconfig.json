@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"baseUrl": "./src",
+		"checkJs": false,
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"target": "ESNext",
+		"strictNullChecks": true,
+		"strictFunctionTypes": true,
+		"experimentalDecorators": true,
+		"allowSyntheticDefaultImports": true
+	},
+	"include": [ "src/esbuild-plugin-swc-minify.js" ],
+	"exclude": [ "node_modules" ]
+}
