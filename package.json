@@ -2,7 +2,7 @@
   "name": "esbuild-plugin-swc-minify",
   "author": "D1g1talEntr0py",
   "license": "ISC",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ESBuild plugin to minify JS(X) files using SWC",
   "maintainers": [
     {
