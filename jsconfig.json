@@ -10,6 +10,6 @@
 		"experimentalDecorators": true,
 		"allowSyntheticDefaultImports": true
 	},
-	"include": [ "src/esbuild-plugin-swc-minify.js" ],
+	"include": [ "src/**/*" ],
 	"exclude": [ "node_modules" ]
 }
