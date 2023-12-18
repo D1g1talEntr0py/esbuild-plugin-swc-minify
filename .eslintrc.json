@@ -1,19 +1,10 @@
 {
 	"env": {
-		"browser": true,
-		"es2022": true,
-		"node": true,
-		"jest": true
+		"es2024": true,
+		"node": true
 	},
-	"plugins": [
-		"compat",
-		"jsdoc"
-	],
-	"extends": [
-		"eslint:recommended",
-		"plugin:compat/recommended",
-		"plugin:jsdoc/recommended"
-	],
+	"plugins": [ "jsdoc" ],
+	"extends": [ "eslint:recommended", "plugin:jsdoc/recommended" ],
 	"overrides": [],
 	"parserOptions": {
 		"ecmaVersion": "latest",
