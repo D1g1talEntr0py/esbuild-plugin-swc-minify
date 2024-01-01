@@ -3,9 +3,10 @@ esbuild plugin to minify js(x) files using SWC
 
 ## Install
 ```js
-// if using npm
+// if using npm 🤷🏽‍♂️
 npm i -D esbuild-plugin-swc-minify
-// if using pnpm
+
+// if using pnpm 😎
 pnpm add -D esbuild-plugin-swc-minify
 ```
 
