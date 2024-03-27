@@ -1,7 +1,7 @@
 {
   "name": "esbuild-plugin-swc-minify",
   "author": "D1g1talEntr0py",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "license": "ISC",
   "description": "esbuild plugin to minify JS(X) files using SWC",
   "maintainers": [
@@ -33,14 +33,15 @@
   },
   "homepage": "https://github.com/D1g1talEntr0py/esbuild-plugin-swc-minify#readme",
   "dependencies": {
-    "@swc/core": "^1.4.2"
+    "@swc/core": "^1.4.11"
   },
   "devDependencies": {
-    "@swc/types": "^0.1.5",
+    "@swc/types": "^0.1.6",
     "eslint": "^8.57.0",
-    "eslint-plugin-jsdoc": "^48.2.0"
+    "eslint-plugin-jsdoc": "^48.2.1"
   },
   "peerDependencies": {
     "esbuild": "^0.20.0"
-  }
+  },
+  "packageManager": "pnpm@8.15.5+sha256.4b4efa12490e5055d59b9b9fc9438b7d581a6b7af3b5675eb5c5f447cee1a589"
 }

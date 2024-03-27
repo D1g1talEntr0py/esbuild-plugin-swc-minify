@@ -1,5 +1,5 @@
+import { promises } from 'node:fs';
 import { minify } from '@swc/core';
-import fs from 'node:fs';
 
 const filter = /\.js[x]?$/;
 const loader = 'js';
@@ -15,7 +15,7 @@ const swcMinify = (options = {}) => {
 		name: 'esbuild:swc-minify',
 		setup(pluginBuild) {
 			pluginBuild.onLoad({ filter }, async ({ path }) => {
-				const { code: contents } = await minify(await fs.promises.readFile(path, 'utf-8'), Object.assign({ ecma: 2016, outputPath: path }, options));
+				const { code: contents } = await minify(await promises.readFile(path, 'utf-8'), Object.assign({ ecma: 2016, outputPath: path }, options));
 
 				return { contents, loader };
 			});
