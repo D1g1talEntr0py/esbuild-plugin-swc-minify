@@ -1,0 +1,21 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"strict": true,
+		"allowJs": false,
+		"checkJs": false,
+		"declaration": true,
+		"declarationMap": true,
+		"esModuleInterop": true,
+		"noImplicitOverride": true,
+		"useDefineForClassFields": true,
+		"resolveJsonModule": true,
+		"module": "NodeNext",
+		"target": "ESNext",
+		"lib": [ "ESNext" ],
+		"moduleResolution": "NodeNext",
+		"outDir": "./dist"
+	},
+	"include": [ "./src/*.ts" ],
+	"exclude": [ "node_modules", "dist"	]
+}

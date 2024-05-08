@@ -1,47 +1,47 @@
----
 env:
   es2024: true
   node: true
 plugins:
-- jsdoc
+  - jsdoc
+  - '@typescript-eslint'
 extends:
-- eslint:recommended
-- plugin:jsdoc/recommended
-overrides: []
+  - 'eslint:recommended'
+  - 'plugin:jsdoc/recommended'
+  - 'plugin:@typescript-eslint/recommended'
+parser: '@typescript-eslint/parser'
 parserOptions:
   ecmaVersion: latest
   sourceType: module
+  ecmaFeatures:
+    impliedStrict: true
 rules:
   jsdoc/tag-lines: 0
   jsdoc/no-defaults: 0
-  no-unused-vars: 'off'
-  no-prototype-builtins: 'off'
   indent:
-  - error
-  - tab
-  - SwitchCase: 1
+    - error
+    - tab
+    - SwitchCase: 1
   linebreak-style:
-  - error
-  - unix
+    - error
+    - unix
   quotes:
-  - error
-  - single
+    - error
+    - single
   semi:
-  - error
-  - always
-  - omitLastInOneLineBlock: true
-    omitLastInOneLineClassBody: true
+    - error
+    - always
+    - omitLastInOneLineBlock: true
+      omitLastInOneLineClassBody: true
 settings:
   jsdoc:
     mode: typescript
-    preferredTypes:
-      object: Object
     structuredTags:
       template:
         name: namepath-defining
-        type: false
+        type: true
     tagNamePreference:
       augments:
-        message: "@extends is to be used over @augments as it is more evocative of
-          classes than @augments"
+        message: >-
+          @extends is to be used over @augments as it is more evocative of
+          classes than @augments
         replacement: extends

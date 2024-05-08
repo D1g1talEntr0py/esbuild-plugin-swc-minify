@@ -13,7 +13,7 @@ pnpm add -D esbuild-plugin-swc-minify
 ## Usage example
 ```js
 import * as esbuild from 'esbuild';
-import swcMinify from 'esbuild-plugin-swc-minify';
+import { swcMinify } from 'esbuild-plugin-swc-minify';
 
 esbuild.build({
   entryPoints: [ './index.js' ],

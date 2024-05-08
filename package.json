@@ -1,7 +1,7 @@
 {
   "name": "esbuild-plugin-swc-minify",
   "author": "D1g1talEntr0py",
-  "version": "1.0.11",
+  "version": "2.0.0",
   "license": "ISC",
   "description": "esbuild plugin to minify JS(X) files using SWC",
   "maintainers": [
@@ -15,11 +15,23 @@
     "url": "git+https://github.com/D1g1talEntr0py/esbuild-plugin-swc-minify.git"
   },
   "type": "module",
-  "exports": "./src/esbuild-plugin-swc-minify.js",
+  "exports": {
+    ".": {
+      "types": "./dist/esbuild-plugin-swc-minify.d.ts",
+      "import": "./dist/esbuild-plugin-swc-minify.js"
+    },
+    "./src": "./src/esbuild-plugin-swc-minify.ts"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
+    "prebuild": "tsc --build --clean",
+    "build": "tsc --build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -33,15 +45,19 @@
   },
   "homepage": "https://github.com/D1g1talEntr0py/esbuild-plugin-swc-minify#readme",
   "dependencies": {
-    "@swc/core": "^1.4.13"
+    "@swc/core": "^1.5.5",
+    "@swc/types": "^0.1.6",
+    "@types/node": "^20.12.11"
   },
   "devDependencies": {
-    "@swc/types": "^0.1.6",
+    "@typescript-eslint/eslint-plugin": "^7.8.0",
+    "@typescript-eslint/parser": "^7.8.0",
     "eslint": "^8.57.0",
-    "eslint-plugin-jsdoc": "^48.2.3"
+    "eslint-plugin-jsdoc": "^48.2.3",
+    "typescript": "^5.4.5"
   },
   "peerDependencies": {
-    "esbuild": "^0.20.0"
+    "esbuild": ">=0.20.0"
   },
-  "packageManager": "pnpm@8.15.5+sha256.4b4efa12490e5055d59b9b9fc9438b7d581a6b7af3b5675eb5c5f447cee1a589"
+  "packageManager": "pnpm@9.0.1+sha256.46d50ee2afecb42b185ebbd662dc7bdd52ef5be56bf035bb615cab81a75345df"
 }
