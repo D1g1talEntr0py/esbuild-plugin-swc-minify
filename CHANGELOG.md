@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.1](https://github.com/D1g1talEntr0py/esbuild-plugin-swc-minify/compare/v1.0.11...v2.0.1) - 2024-07-04
+
+- Maintenance release. Updated dependencies.
+
 ## [2.0.0](https://github.com/D1g1talEntr0py/esbuild-plugin-swc-minify/compare/v1.0.11...v2.0.0) - 2024-04-20
 
 ### Added
