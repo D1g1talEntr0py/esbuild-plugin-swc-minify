@@ -11,7 +11,7 @@ const encoding = 'utf-8';
 /**
  * ESBuild plugin to minify JS(X) files using SWC
  *
- * @param {JsMinifyOptions} options SWC options
+ * @param {import('@swc/types').JsMinifyOptions} options SWC options
  * @returns {Plugin} esbuild plugin
  */
 export const swcMinify = (options: JsMinifyOptions = {}): Plugin => {
