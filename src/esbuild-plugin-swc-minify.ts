@@ -1,7 +1,7 @@
 import {minify} from '@swc/core';
+import {promises} from 'node:fs';
 import type {JsMinifyOptions} from '@swc/types';
 import type {Plugin} from 'esbuild';
-import {promises} from 'node:fs';
 
 const filter = /\.js[x]?$/;
 const loader = 'js';
