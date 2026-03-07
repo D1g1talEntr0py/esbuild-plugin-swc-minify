@@ -1,3 +1,38 @@
+## [2.1.1](https://github.com/D1g1talEntr0py/esbuild-plugin-swc-minify/compare/v2.1.0...v2.1.1) (2026-03-07)
+
+### Bug Fixes
+
+* update all dev dependencies to latest versions (1a4bffbe0689f267152845ad818902dae0c11a21)
+Bumps eslint to v10, typescript-eslint to 8.56, esbuild to 0.27, @swc/core to 1.15, typescript to 5.9, and all associated transitive dependencies.
+
+Several transitive dependencies were removed as they are no longer part of the eslint 10 flat-config-only dependency tree (chalk, argparse, js-yaml, strip-json-comments, import-fresh, fast-glob replaced by tinyglobby/fdir, etc.).
+
+Addresses a security fix present in updated transitive dependencies.
+
+
+### Miscellaneous Chores
+
+* update package metadata, tighten tsconfig, and refactor source (a1e95b56ddecab292e6b28dc39feb7dc6af2a575)
+Adds homepage, repository, bugs, engines, packageManager, and publishConfig fields to package.json for better npm discoverability and to pin the pnpm version.
+
+Removes the src export condition and simplifies the files field to publish only compiled output.
+
+Fixes indentation inconsistencies and reorders fields for clarity.
+
+Simplifies tsconfig by removing unused compiler options (baseUrl, declarationMap, esModuleInterop, noUncheckedIndexedAccess) and tidying the include/exclude config.
+
+Reorders type imports and updates a JSDoc param tag to use the locally imported type name.
+
+
+### Continuous Integration
+
+* add GitHub Actions workflows, semantic-release config, and docs (95f86840131a26c13f225dae7ea1942b60fc4408)
+Adds CI pipeline running lint and build across Node.js 20, 22, and 24.
+
+Adds automated release workflow using semantic-release with conventional commits for versioning, changelog generation, npm publishing with provenance, and GitHub releases.
+
+Adds release process documentation and Copilot instructions summarising conventions and guidelines.
+
 # Changelog
 
 All notable changes to this project will be documented in this file.

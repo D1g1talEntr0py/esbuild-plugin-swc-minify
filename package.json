@@ -1,10 +1,10 @@
 {
   "name": "esbuild-plugin-swc-minify",
   "author": "D1g1talEntr0py",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "license": "ISC",
   "description": "esbuild plugin to minify JS(X) files using SWC",
-	"homepage": "https://github.com/D1g1talEntr0py/esbuild-plugin-swc-minify#readme",
+  "homepage": "https://github.com/D1g1talEntr0py/esbuild-plugin-swc-minify#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/D1g1talEntr0py/esbuild-plugin-swc-minify.git"
@@ -21,9 +21,9 @@
   "engines": {
     "node": ">=20.16.0"
   },
-	"packageManager": "pnpm@10.30.3",
+  "packageManager": "pnpm@10.30.3",
   "publishConfig": {
-		"registry": "https://registry.npmjs.org",
+    "registry": "https://registry.npmjs.org",
     "access": "public"
   },
   "type": "module",
