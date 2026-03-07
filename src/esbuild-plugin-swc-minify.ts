@@ -1,7 +1,7 @@
 import {minify} from '@swc/core';
 import {promises} from 'node:fs';
-import type {JsMinifyOptions} from '@swc/types';
 import type {Plugin} from 'esbuild';
+import type {JsMinifyOptions} from '@swc/types';
 
 const filter = /\.js[x]?$/;
 const loader = 'js';
@@ -11,7 +11,7 @@ const encoding = 'utf-8';
 /**
  * ESBuild plugin to minify JS(X) files using SWC
  *
- * @param {import('@swc/types').JsMinifyOptions} options SWC options
+ * @param {JsMinifyOptions} options SWC options
  * @returns {Plugin} esbuild plugin
  */
 export const swcMinify = (options: JsMinifyOptions = {}): Plugin => {
