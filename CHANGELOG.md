@@ -1,3 +1,9 @@
+## [2.1.2](https://github.com/D1g1talEntr0py/esbuild-plugin-swc-minify/compare/v2.1.1...v2.1.2) (2026-03-07)
+
+### Bug Fixes
+
+* **release:** updated config to use pnpm and create the build prior to publishing (3ce942a5fe20bef886b8e6b456296df238b07447)
+
 ## [2.1.1](https://github.com/D1g1talEntr0py/esbuild-plugin-swc-minify/compare/v2.1.0...v2.1.1) (2026-03-07)
 
 ### Bug Fixes
