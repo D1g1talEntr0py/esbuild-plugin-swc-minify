@@ -2,7 +2,7 @@
   "name": "esbuild-plugin-swc-minify",
   "author": "D1g1talEntr0py",
   "version": "2.1.2",
-  "license": "ISC",
+  "license": "MIT",
   "description": "esbuild plugin to minify JS(X) files using SWC",
   "homepage": "https://github.com/D1g1talEntr0py/esbuild-plugin-swc-minify#readme",
   "repository": {
@@ -34,7 +34,10 @@
     }
   },
   "files": [
-    "./dist"
+    "./dist",
+		"README.md",
+		"CHANGELOG.md",
+		"LICENSE"
   ],
   "scripts": {
     "build": "tsc",
