@@ -1,3 +1,24 @@
+## [2.1.3](https://github.com/D1g1talEntr0py/esbuild-plugin-swc-minify/compare/v2.1.2...v2.1.3) (2026-03-18)
+
+### Bug Fixes
+
+* **deps:** address CVE-2026-32141 (8426884eb1b5cc568dcd3ed88582f75f6cdca214)
+Bumps unpatched dependencies to resolve security vulnerabilities. Updates pnpm version, esbuild, and various ESLint and TypeScript related packages to ensure secure and stable builds.
+
+Fixes CVE-2026-32141
+
+
+### Documentation
+
+* update license to MIT and add README badges (802196b9cde6aac95d91180f87c314d14339912e)
+Transitions the project license to MIT and updates the copyright details. Adds status badges to the README and updates the package.json to reflect the new license and included files.
+
+
+### Miscellaneous Chores
+
+* update CI workflows and release configuration (6a223f934db7df5e01cd8881687b51665094317c)
+Updates GitHub Actions to use newer versions of checkout, setup-node, and action-setup. Modifies the semantic-release configuration to adjust pnpm commands for linting, building, and publishing.
+
 ## [2.1.2](https://github.com/D1g1talEntr0py/esbuild-plugin-swc-minify/compare/v2.1.1...v2.1.2) (2026-03-07)
 
 ### Bug Fixes
