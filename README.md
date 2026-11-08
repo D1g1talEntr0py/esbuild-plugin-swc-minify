@@ -37,3 +37,12 @@ esbuild.build({
 When instantiating the plugin, you can pass SWC's official `JsMinifyOptions` object. See the [JsMinifyOptions type declarations](https://swc.rs/docs/usage/core#minify).
 
 The default `ecma` target is `2022`; set `ecma` in the options to target another ECMAScript version.
+
+## Contributing and releases
+
+Use Conventional Commits when contributing. Releases are automated with git-cliff:
+`feat` triggers a minor release, `fix`/`perf`/`revert` trigger a patch, and any
+conventional breaking change triggers a major release. Other commits, including
+`refactor` and unconventional commits, appear in the next release's full changelog
+but do not independently trigger publishing. See the [release process](docs/release-process.md)
+for validation, previews, and npm Trusted Publishing details. Do not manually bump versions.

@@ -1,0 +1,58 @@
+[changelog]
+header = """# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+"""
+body = """
+{% if version %}
+{% if previous.version %}
+## [{{ version | trim_start_matches(pat="v") }}]({{ self::remote_url() }}/compare/{{ previous.version }}...{{ version }}) - {{ timestamp | date(format="%Y-%m-%d") }}
+{% else %}
+## [{{ version | trim_start_matches(pat="v") }}]({{ self::remote_url() }}/tree/{{ version }}) - {{ timestamp | date(format="%Y-%m-%d") }}
+{% endif %}
+{% else %}
+## [Unreleased]
+{% endif %}
+{% for group, commits in commits | group_by(attribute="group") %}
+### {{ group | split(pat=" - ") | last }}
+{% for commit in commits %}
+* {% if commit.scope %}**{{ commit.scope }}:** {% endif %}{{ commit.message }} ([{{ commit.id | truncate(length=7, end="") }}]({{ self::remote_url() }}/commit/{{ commit.id }}))
+{% endfor %}
+{% endfor %}
+{% macro remote_url() -%}
+https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}
+{%- endmacro %}
+"""
+trim = true
+
+[git]
+conventional_commits = true
+filter_unconventional = false
+split_commits = false
+filter_commits = false
+commit_parsers = [
+  { message = "^[a-zA-Z][a-zA-Z0-9_-]*(?:\\([^\\r\\n()]+\\))?!: .+", group = "00 - Breaking Changes" },
+  { footer = "^BREAKING(?: CHANGE|-CHANGE):", group = "00 - Breaking Changes" },
+  { message = "^feat(?:\\([^)]*\\))?:", group = "01 - Features" },
+  { message = "^fix(?:\\([^)]*\\))?:", group = "02 - Bug Fixes" },
+  { message = "^perf(?:\\([^)]*\\))?:", group = "03 - Performance Improvements" },
+  { message = "^revert(?:\\([^)]*\\))?:", group = "04 - Reverts" },
+  { message = "^docs(?:\\([^)]*\\))?:", group = "05 - Documentation" },
+  { message = "^style(?:\\([^)]*\\))?:", group = "06 - Styles" },
+  { message = "^chore(?:\\([^)]*\\))?:", group = "07 - Chores" },
+  { message = "^refactor(?:\\([^)]*\\))?:", group = "08 - Code Refactoring" },
+  { message = "^test(?:\\([^)]*\\))?:", group = "09 - Tests" },
+  { message = "^build(?:\\([^)]*\\))?:", group = "10 - Build System" },
+  { message = "^ci(?:\\([^)]*\\))?:", group = "11 - Continuous Integration" },
+  { message = ".*", group = "12 - Other Changes" }
+]
+tag_pattern = "^v[0-9]+\\.[0-9]+\\.[0-9]+$"
+sort_commits = "oldest"
+
+[bump]
+features_always_bump_minor = true
+breaking_always_bump_major = true
+initial_tag = "v0.1.0"

@@ -6,9 +6,11 @@ on:
 
 permissions:
   contents: write
-  issues: write
-  pull-requests: write
   id-token: write
+
+concurrency:
+  group: release-main
+  cancel-in-progress: false
 
 jobs:
   release:
@@ -17,14 +19,96 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
+          ref: main
           fetch-depth: 0
       - uses: pnpm/action-setup@v5
       - uses: actions/setup-node@v6
         with:
           node-version: 'lts/*'
           cache: pnpm
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: git-cliff@2.10.1
       - run: sudo npm install -g npm@latest
       - run: pnpm install --frozen-lockfile
-      - run: npx -y -p semantic-release -p @semantic-release/changelog -p @semantic-release/git -p @semantic-release/exec -p conventional-changelog-conventionalcommits semantic-release
+      - name: Determine release and generate changelog
+        id: release
+        shell: bash
+        run: |
+          set -euo pipefail
+          LATEST_TAG=$(git tag --merged HEAD --sort=-version:refname | sed -n '/^v[0-9]\+\.[0-9]\+\.[0-9]\+$/p' | sed -n '1p')
+          RANGE=HEAD
+          if [[ -n "$LATEST_TAG" ]]; then
+            RANGE="$LATEST_TAG..HEAD"
+          fi
+          git log "$RANGE" --format='%B%x00' > "$RUNNER_TEMP/release-commits.txt"
+          ELIGIBLE=$(node --input-type=module <<'NODE'
+          import { readFileSync } from 'node:fs';
+          const commits = readFileSync(`${process.env.RUNNER_TEMP}/release-commits.txt`, 'utf8').split('\0');
+          const eligible = commits.some(message => {
+            const [subject, ...body] = message.trim().split('\n');
+            const header = /^([a-zA-Z][a-zA-Z0-9_-]*)(?:\([^\r\n()]+\))?(!)?: .+/.exec(subject);
+            if (!header) return false;
+            return header[2] === '!' || ['feat', 'fix', 'perf', 'revert'].includes(header[1])
+              || body.some(line => /^BREAKING(?: CHANGE|-CHANGE):/.test(line));
+          });
+          console.log(eligible);
+          NODE
+          )
+          if [[ "$ELIGIBLE" != true ]]; then
+            echo "No release-worthy commits since ${LATEST_TAG:-the start of history}"
+            exit 0
+          fi
+          BUMP_LOG="$RUNNER_TEMP/git-cliff-bump.log"
+          if VERSION=$(git-cliff --github-repo "$GITHUB_REPOSITORY" --use-branch-tags --bumped-version 2>"$BUMP_LOG"); then
+            BUMP_STATUS=0
+          else
+            BUMP_STATUS=$?
+          fi
+          cat "$BUMP_LOG" >&2
+          if grep -q "There is nothing to bump" "$BUMP_LOG"; then
+            echo "No version bump required"
+            exit 0
+          fi
+          if [[ "$BUMP_STATUS" -ne 0 ]]; then
+            exit "$BUMP_STATUS"
+          fi
+          VERSION=${VERSION#v}
+          CURRENT_VERSION=$(node -p "JSON.parse(require('node:fs').readFileSync('package.json', 'utf8')).version")
+          if [[ -z "$VERSION" || "$VERSION" == "${LATEST_TAG#v}" || "$VERSION" == "$CURRENT_VERSION" ]]; then
+            echo "No new version to release"
+            exit 0
+          fi
+          if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Invalid bumped version: $VERSION"
+            exit 1
+          fi
+          git-cliff --github-repo "$GITHUB_REPOSITORY" --use-branch-tags --tag "v$VERSION" --unreleased --strip header --output "$RUNNER_TEMP/release-notes.md"
+          git-cliff --github-repo "$GITHUB_REPOSITORY" --use-branch-tags --tag "v$VERSION" --output CHANGELOG.md
+          npm version "$VERSION" --no-git-tag-version
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Validate and pack release
+        if: steps.release.outputs.version != ''
+        run: |
+          pnpm lint
+          pnpm -s build
+          pnpm pack --pack-destination "$RUNNER_TEMP/package"
+      - name: Publish package and release
+        if: steps.release.outputs.version != ''
+        shell: bash
+        run: |
+          set -euo pipefail
+          ARTIFACT="$RUNNER_TEMP/package/esbuild-plugin-swc-minify-$VERSION.tgz"
+          pnpm publish "$ARTIFACT" --no-git-checks --provenance
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add CHANGELOG.md package.json
+          git commit -m "chore(release): $VERSION [skip ci]" -m "$(printf '%s\n' '- regenerate the full changelog from Git history' "- update the package version to $VERSION")"
+          git tag "v$VERSION"
+          git push origin HEAD:main "refs/tags/v$VERSION"
+          gh release create "v$VERSION" --title "v$VERSION" --notes-file "$RUNNER_TEMP/release-notes.md" "$ARTIFACT"
+        env:
+          VERSION: ${{ steps.release.outputs.version }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

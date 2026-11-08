@@ -51,5 +51,6 @@ pnpm prepublish  # Lint + build (runs before npm publish)
 - The default `ecma` target is `2022`; consumers override this via `JsMinifyOptions`.
 - Do not add runtime dependencies; `@swc/core` and `esbuild` are peer dependencies.
 - Do not add a CommonJS build or dual-format output — this package is ESM-only.
-- When changing the public API, update `README.md` and bump the version in `package.json` following semver.
+- When changing the public API, update `README.md` and use an appropriate Conventional Commit (including `!` or a breaking-change footer for breaking changes). Do not manually bump `package.json`; the git-cliff release workflow manages versions.
+- Every commit appears in the next release's regenerated changelog. Only `feat`, `fix`, `perf`, `revert`, and conventional breaking changes trigger releases; `refactor` alone does not.
 - Release process is documented in `docs/release-process.md`.
