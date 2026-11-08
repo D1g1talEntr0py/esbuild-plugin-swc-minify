@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [2.2.2](https://github.com/D1g1talEntr0py/esbuild-plugin-swc-minify/compare/v2.2.1...v2.2.2) - 2026-11-08
+
+
+
+### Bug Fixes
+
+* **deps:** patch minimatch globparts DoS vulnerability ([4762ec1](https://github.com/D1g1talEntr0py/esbuild-plugin-swc-minify/commit/4762ec14ba82f2a8fe2e56327faf490747b6c1af))
+
+
+
+
 ## [2.2.1](https://github.com/D1g1talEntr0py/esbuild-plugin-swc-minify/compare/v2.2.0...v2.2.1) - 2026-11-08
 
 
@@ -13,6 +24,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Bug Fixes
 
 * **ci:** update Node.js version matrix to remove 20 and include 26 ([94371c1](https://github.com/D1g1talEntr0py/esbuild-plugin-swc-minify/commit/94371c17aad6ac65accbab0f02d13bd298213607))
+
+
+### Chores
+
+* **release:** 2.2.1 [skip ci] ([63b8ea5](https://github.com/D1g1talEntr0py/esbuild-plugin-swc-minify/commit/63b8ea538648dee2d659728461d45e166d8d6997))
 
 
 
