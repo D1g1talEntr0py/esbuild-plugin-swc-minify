@@ -1,15 +1,22 @@
 {
 	"compilerOptions": {
-		"strict": true,
 		"declaration": true,
-		"noImplicitOverride": true,
 		"verbatimModuleSyntax": true,
-		"resolveJsonModule": true,
-		"module": "NodeNext",
-		"target": "ESNext",
+		"forceConsistentCasingInFileNames": true,
+		"noImplicitOverride": true,
+		"noImplicitReturns": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"allowUnusedLabels": false,
+		"noFallthroughCasesInSwitch": true,
+		"allowUnreachableCode": false,
+		"noPropertyAccessFromIndexSignature": true,
+		"exactOptionalPropertyTypes": false,
 		"lib": [ "ESNext" ],
-		"moduleResolution": "NodeNext",
+		"types": [ "node" ],
+		"module": "NodeNext",
+		"rootDir": "./src",
 		"outDir": "./dist"
 	},
-	"include": [ "./src/" ]
+	"include": [ "./src" ]
 }
