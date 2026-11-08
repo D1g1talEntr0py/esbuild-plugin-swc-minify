@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [2.2.1](https://github.com/D1g1talEntr0py/esbuild-plugin-swc-minify/compare/v2.2.0...v2.2.1) - 2026-11-08
+
+
+
+### Bug Fixes
+
+* **ci:** update Node.js version matrix to remove 20 and include 26 ([94371c1](https://github.com/D1g1talEntr0py/esbuild-plugin-swc-minify/commit/94371c17aad6ac65accbab0f02d13bd298213607))
+
+
+
+
 ## [2.2.0](https://github.com/D1g1talEntr0py/esbuild-plugin-swc-minify/compare/v2.1.3...v2.2.0) - 2026-11-08
 
 
@@ -20,6 +31,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * **tooling:** modernize TypeScript and ESLint tooling ([bafe7bd](https://github.com/D1g1talEntr0py/esbuild-plugin-swc-minify/commit/bafe7bdec4d31270a92436266d2746da7c2c7155))
 
 * **lint:** update ESLint config for native TypeScript tooling ([f996c55](https://github.com/D1g1talEntr0py/esbuild-plugin-swc-minify/commit/f996c5559a821b7b505e0098d167f92a79fe8b92))
+
+* **release:** 2.2.0 [skip ci] ([f7c3e60](https://github.com/D1g1talEntr0py/esbuild-plugin-swc-minify/commit/f7c3e606dc4849731bfec7c860a3a32eae572f64))
 
 
 ### Continuous Integration

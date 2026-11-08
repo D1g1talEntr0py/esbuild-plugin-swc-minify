@@ -1,7 +1,7 @@
 {
   "name": "esbuild-plugin-swc-minify",
   "author": "D1g1talEntr0py",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "license": "MIT",
   "description": "esbuild plugin to minify JS(X) files using SWC",
   "homepage": "https://github.com/D1g1talEntr0py/esbuild-plugin-swc-minify#readme",
