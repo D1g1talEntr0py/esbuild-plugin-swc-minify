@@ -48,7 +48,7 @@ pnpm prepublish  # Lint + build (runs before npm publish)
 ## Key Guidelines
 
 - Keep the plugin minimal — it wraps a single `onLoad` hook for `*.js` and `*.jsx` files.
-- The default `ecma` target is `2016`; consumers override this via `JsMinifyOptions`.
+- The default `ecma` target is `2022`; consumers override this via `JsMinifyOptions`.
 - Do not add runtime dependencies; `@swc/core` and `esbuild` are peer dependencies.
 - Do not add a CommonJS build or dual-format output — this package is ESM-only.
 - When changing the public API, update `README.md` and bump the version in `package.json` following semver.

@@ -34,4 +34,6 @@ esbuild.build({
 ```
 
 ## Options
-When instantiating plugin you can pass an objects with options. This object has SWC official `JsMinifyOptions` type, see the 'Type Declarations' in [JsMinifyOptions](https://swc.rs/docs/usage/core#minify)。
+When instantiating the plugin, you can pass SWC's official `JsMinifyOptions` object. See the [JsMinifyOptions type declarations](https://swc.rs/docs/usage/core#minify).
+
+The default `ecma` target is `2022`; set `ecma` in the options to target another ECMAScript version.
